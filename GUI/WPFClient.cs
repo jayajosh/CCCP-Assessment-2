@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Net.Sockets;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace WPF_Client
         {
             clientRunning = true;
             
-            if (Connect("localhost", 4444))
+            if (Connect(IPAddress.Parse("192.168.0.51"), 4444))
             {
                 Task.Run(ReadFromServer);
                 Task.Run(DisplayMessages);
@@ -65,11 +66,11 @@ namespace WPF_Client
             tcpClient.Close();
         }
 
-        private bool Connect(string url, int portNumber)
+        private bool Connect(IPAddress url, int portNumber)
         {
             try
             {
-                tcpClient.Connect(url, portNumber);
+                tcpClient.Connect(IPAddress.Parse("192.168.0.51"), portNumber);
                 stream = tcpClient.GetStream();
                 reader = new StreamReader(stream, System.Text.Encoding.UTF8);
                 writer = new StreamWriter(stream, System.Text.Encoding.UTF8);
@@ -84,7 +85,11 @@ namespace WPF_Client
 
         private void WriteToServer(char userChoice, string broadcastMessage)
         {
-            if (userChoice == 'X')
+            if (Char.IsDigit(userChoice)) {
+               
+                    
+            }
+            else if (userChoice == 'X')
             {
                 clientRunning = false;
             }

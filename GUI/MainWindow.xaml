@@ -21,7 +21,9 @@
         <Button Click="ExitClick" Content="Exit" HorizontalAlignment="Left" Margin="15,353,0,0" VerticalAlignment="Top" Width="160" Height="44" Background="#FF434346" FontFamily="SF Pro Display" FontSize="16" Foreground="#FFF0EFF1" BorderBrush="#FF2D2D30"/>
 
         <Frame Name="MainFrame" Content="" HorizontalAlignment="Center" Height="387" Margin="0,10,0,0" VerticalAlignment="Top" Width="590" Background="#FF1A1A1A" Grid.Column="1" NavigationUIVisibility="Hidden"/>
-        <TextBox Name="BroadcastArea" HorizontalAlignment="Left" Height="32" Margin="15,402,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="769" Grid.ColumnSpan="2"/>
+        <TextBox Name="BroadcastArea" HorizontalAlignment="Center" Height="32" Margin="0,402,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="590" Grid.Column="1"/>
+        <!--<TextBox Name="IPAddressBox" HorizontalAlignment="Left" Height="32" Margin="15,402,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+        <Button Click="UpdateIP" Content="->" HorizontalAlignment="Left" Margin="143,402,0,0" VerticalAlignment="Top" Width="32" Height="32" Background="White" FontFamily="SF Pro Display" FontSize="16" Foreground="#FF434346" BorderBrush="#FFABADB3"/>-->
 
     </Grid>
 </Window>

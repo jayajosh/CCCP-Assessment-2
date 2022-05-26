@@ -55,8 +55,6 @@ namespace Assignment_Gui.Pages
                 facade.AddTransaction("Item Added", i.ID, i.Name, itemPrice, i.Quantity, employeeID);
 
                 MessageBox.Show("Item Added");
-                //ViewInventoryReportCommand ViewInv = new ViewInventoryReportCommand();
-                //ViewInv.Execute();
             }
             catch (Exception error)
             {

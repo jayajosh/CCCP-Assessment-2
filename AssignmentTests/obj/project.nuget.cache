@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tgiFsG5XfOR0TofVZjUSvZdOKT39RzPXGLGe29tBBOG/6r4zYfylrILv7VuUEaKWYtTc36KUi5Z7pFmDzodAOQ==",
+  "dgSpecHash": "wVuoeoOqfohEDTeQ/odaXtmYpmoxCuHAmsnB2BWeW+Nm1zKuHPqMiRkKgFySu6hcX65/SFm1RmFQuU5XLFt53g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\AssignmentTests\\AssignmentTests.csproj",
+  "projectFilePath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\AssignmentTests\\AssignmentTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Spectre\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\Spectre\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

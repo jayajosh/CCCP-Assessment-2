@@ -1,10 +1,11 @@
-﻿using Commands;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+using ui_command;
 
 namespace ServerSide
 {
@@ -18,7 +19,7 @@ namespace ServerSide
 
         public MyServer()
         {
-            IPAddress ipAddress = IPAddress.Loopback;
+            IPAddress ipAddress = IPAddress.Parse("192.168.0.51");
             tcpListener = new TcpListener(ipAddress, 4444);
             clientServices = new List<ClientService>();
             Console.WriteLine("Listening....");

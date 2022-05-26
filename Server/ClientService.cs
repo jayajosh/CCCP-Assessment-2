@@ -1,13 +1,13 @@
-﻿//using Commands;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
 using System.Text.Json;
+using ui_command;
 
 namespace ServerSide
 {
-    /*class ClientService
+    class ClientService
     {
 
         private Socket socket;
@@ -31,34 +31,69 @@ namespace ServerSide
         }
         public void InteractWithClient()
         {
+
+            CommandFactory factory = new CommandFactory();
+            factory
+                .CreateCommand(UI_Command.INITIALISE_DATABASE)
+                .Execute();
+
             try
             {
                 string clientMessage = reader.ReadLine();
                 while (clientMessage != null)
                 {
-                    if (clientMessage.ToUpper().StartsWith("B"))
-                    {
-                        clientMessage = reader.ReadLine();
-                        broadcast(
-                            string.Format(
-                                "{0}: {1}", 
-                                socket.RemoteEndPoint.ToString(), 
-                                clientMessage));
-                    }
-                    else
-                    {
-                        string response = 
-                            new CommandFactory()
-                                .Create(clientMessage.ToUpper()[0])
-                                .Execute();
 
-                        lock (writer)
+                    /*                    if (clientMessage.ToUpper().StartsWith("B"))
+                                        {
+                                            clientMessage = reader.ReadLine();
+                                            broadcast(
+                                                string.Format(
+                                                    "{0}: {1}", 
+                                                    socket.RemoteEndPoint.ToString(), 
+                                                    clientMessage));
+                                        }
+                                        else
+                                        {
+                                            string response = 
+                                                new CommandFactory()
+                                                    .Create(clientMessage.ToUpper()[0])
+                                                    .Execute();
+
+                                            lock (writer)
+                                            {
+                                                writer.WriteLine(response);
+                                                writer.Flush();
+                                            }
+                                        }*/
+
+                    if (clientMessage.GetType() == 0.GetType()) {
+                         factory
+                        .CreateCommand(Int32.Parse(clientMessage))
+                        .Execute();
+                        /*switch (Int32.Parse(clientMessage))
                         {
-                            writer.WriteLine(response);
-                            writer.Flush();
-                        }
+                            case UI_Command.ADD_ITEM_TO_STOCK:
+                                return new AddItemToStockCommand();
+                            case UI_Command.ADD_QUANTITY_TO_ITEM:
+                                return new AddQuantityToItemCommand();
+                            case UI_Command.TAKE_QUANTITY_FROM_ITEM:
+                                return new TakeQuantityFromItemCommand();
+                            case UI_Command.VIEW_INVENTORY_REPORT:
+                                return new ViewInventoryReportCommand();
+                            case UI_Command.VIEW_FINANCIAL_REPORT:
+                                return new ViewFinancialReportCommand();
+                            case UI_Command.VIEW_TRANSACTION_LOG:
+                                return new ViewTransactionLogCommand();
+                            case UI_Command.VIEW_PERSONAL_USAGE_REPORT:
+                                return new ViewPersonalUsageReportCommand();
+                            case UI_Command.DISPLAY_MENU:
+                                return DisplayMenuCommand.INSTANCE;
+                            case UI_Command.INITIALISE_DATABASE:
+                                return new InitialiseDatabaseCommand();
+                            default:
+                                return new NullCommand();
+                        }*/
                     }
-
                     clientMessage = reader.ReadLine();
                 }
             }
@@ -92,5 +127,5 @@ namespace ServerSide
                 writer.Flush();
             }
         }
-    }*/
+    }
 }

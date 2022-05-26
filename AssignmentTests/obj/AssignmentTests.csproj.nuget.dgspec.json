@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\AssignmentTests\\AssignmentTests.csproj": {}
+    "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\AssignmentTests\\AssignmentTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\AssignmentTests\\AssignmentTests.csproj": {
+    "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\AssignmentTests\\AssignmentTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\AssignmentTests\\AssignmentTests.csproj",
+        "projectUniqueName": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\AssignmentTests\\AssignmentTests.csproj",
         "projectName": "AssignmentTests",
-        "projectPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\AssignmentTests\\AssignmentTests.csproj",
+        "projectPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\AssignmentTests\\AssignmentTests.csproj",
         "packagesPath": "C:\\Users\\Spectre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\AssignmentTests\\obj\\",
+        "outputPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\AssignmentTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Spectre\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\Assignment\\AssignmentMain.csproj": {
-                "projectPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\Assignment\\AssignmentMain.csproj"
+              "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\Assignment\\AssignmentMain.csproj": {
+                "projectPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\Assignment\\AssignmentMain.csproj"
               }
             }
           }
@@ -78,14 +78,14 @@
         }
       }
     },
-    "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\Assignment\\AssignmentMain.csproj": {
+    "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\Assignment\\AssignmentMain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\Assignment\\AssignmentMain.csproj",
+        "projectUniqueName": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\Assignment\\AssignmentMain.csproj",
         "projectName": "AssignmentMain",
-        "projectPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\Assignment\\AssignmentMain.csproj",
+        "projectPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\Assignment\\AssignmentMain.csproj",
         "packagesPath": "C:\\Users\\Spectre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\Assignment\\obj\\",
+        "outputPath": "C:\\Users\\Spectre\\OneDrive - Staffordshire University\\Year 3\\Clean Coding\\Assignment 2\\CCCP-Assignment-2\\Assignment\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Spectre\\AppData\\Roaming\\NuGet\\NuGet.Config",

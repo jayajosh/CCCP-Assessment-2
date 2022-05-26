@@ -16,6 +16,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF_Client;
 using ui_command;
+using System.Diagnostics;
+using System.Net;
+using System.Threading;
 
 namespace Assignment_Gui
 {
@@ -26,7 +29,7 @@ namespace Assignment_Gui
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        private Thread thread;
         private WPFClient client;
         private Task clientTask;
 
@@ -74,7 +77,15 @@ namespace Assignment_Gui
 
         private void ExitClick(object sender, RoutedEventArgs e)
         {
+            //client.StopRunning();
             System.Windows.Application.Current.Shutdown();
+        }
+        private async void UpdateIP(object sender, RoutedEventArgs e)
+        {
+/*            client.StopRunning();
+            client.ipAddress = IPAddress.Parse(IPAddressBox.Text);
+            //clientTask.();
+            clientTask = Task.Run(client.Run);*/
         }
         public void BroadcastMessage(List<string> msg)
         {
