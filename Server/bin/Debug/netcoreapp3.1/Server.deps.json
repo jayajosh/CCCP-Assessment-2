@@ -1,0 +1,91 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Server/1.0.0": {
+        "dependencies": {
+          "Commands": "1.0.0"
+        },
+        "runtime": {
+          "Server.dll": {}
+        }
+      },
+      "Commands/1.0.0": {
+        "dependencies": {
+          "Controllers": "1.0.0",
+          "Presenters": "1.0.0"
+        },
+        "runtime": {
+          "Commands.dll": {}
+        }
+      },
+      "Controllers/1.0.0": {
+        "dependencies": {
+          "DTOs": "1.0.0",
+          "UseCases": "1.0.0"
+        },
+        "runtime": {
+          "Controllers.dll": {}
+        }
+      },
+      "DTOs/1.0.0": {
+        "runtime": {
+          "DTOs.dll": {}
+        }
+      },
+      "Presenters/1.0.0": {
+        "dependencies": {
+          "DTOs": "1.0.0",
+          "UseCases": "1.0.0"
+        },
+        "runtime": {
+          "Presenters.dll": {}
+        }
+      },
+      "UseCases/1.0.0": {
+        "dependencies": {
+          "DTOs": "1.0.0"
+        },
+        "runtime": {
+          "UseCases.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Server/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Commands/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Controllers/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DTOs/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Presenters/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UseCases/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
