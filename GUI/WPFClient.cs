@@ -23,17 +23,18 @@ namespace WPF_Client
         private BlockingCollection<char> commands;
 
         private BroadcastMessage BroadcastMessage;
+        private GetDataToBroadcast GetDataToBroadcast;
         private ShowMessage ShowMessage;
         /*private GetMessageToBroadcast GetMessageToBroadcast;
         private DisplayVerse DisplayVerse;*/
 
-        public WPFClient(BroadcastMessage BroadcastMessage)
+        public WPFClient(BroadcastMessage BroadcastMessage, GetDataToBroadcast GetDataToBroadcast)
         {
             tcpClient = new TcpClient();
             messages = new ConcurrentQueue<List<string>>();
             commands = new BlockingCollection<char>();
             this.BroadcastMessage = BroadcastMessage;
-            //this.GetMessageToBroadcast = GetMessageToBroadcast;
+            this.GetDataToBroadcast = GetDataToBroadcast;
             this.ShowMessage = ShowMessage;
             //this.DisplayVerse = DisplayVerse;
         }
@@ -48,15 +49,15 @@ namespace WPF_Client
                 Task.Run(DisplayMessages);
 
                 while (clientRunning)
-                {  
+                {
                     char userInput = commands.Take();
 
-                    string msgToBroadcast = "";
-                    if (userInput == 'B')
+                    List<string> msgToBroadcast = new List<string> { };
+                    if (Char.IsDigit(userInput))
                     {
-                        //msgToBroadcast = GetMessageToBroadcast();
+                        msgToBroadcast = GetDataToBroadcast();
+                        WriteToServer(userInput, msgToBroadcast);
                     }
-                    WriteToServer(userInput, msgToBroadcast);
                 }
             }
             else
@@ -83,27 +84,33 @@ namespace WPF_Client
             return true;
         }
 
-        private void WriteToServer(char userChoice, string broadcastMessage)
+        private void WriteToServer(char userChoice, List<string> broadcastData)
         {
             if (Char.IsDigit(userChoice)) {
-               
-                    
+                writer.WriteLine("" + userChoice);
+                Trace.WriteLine(userChoice);
+                foreach (string line in broadcastData)
+                {
+                    Trace.WriteLine(line);
+                    writer.WriteLine(line);
+                }
+                writer.Flush();
             }
             else if (userChoice == 'X')
             {
                 clientRunning = false;
             }
-            else if (userChoice == 'B' && broadcastMessage.Length > 0)
+            /*else if (userChoice == 'B' && broadcastData.Length > 0)
             {
                 writer.WriteLine("" + userChoice);
-                writer.WriteLine(broadcastMessage);
+                writer.WriteLine(broadcastData);
                 writer.Flush();
             }
             else if (userChoice != 'B')
             {
                 writer.WriteLine("" + userChoice);
                 writer.Flush();
-            }
+            }*/
         }
 
         private void ReadFromServer()

@@ -24,6 +24,8 @@ namespace Assignment_Gui
 {
     delegate void BroadcastMessage(List<string> msg);
     delegate void ShowMessage(string msg);
+    delegate List<string> GetDataToBroadcast();
+    delegate void BroadcastData(List<string> data);
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -32,11 +34,12 @@ namespace Assignment_Gui
         private Thread thread;
         private WPFClient client;
         private Task clientTask;
+        public List<string> bData;
 
         public MainWindow()
         {
             InitializeComponent();
-            client =  new WPFClient(BroadcastMessage);
+            client =  new WPFClient(BroadcastMessage, GetDataToBroadcast);
             clientTask = Task.Run(client.Run);
         }
 
@@ -91,6 +94,17 @@ namespace Assignment_Gui
         {
             msg.ForEach(s => Dispatcher.Invoke(() => BroadcastArea.Text += s));
             Dispatcher.Invoke(() => BroadcastArea.ScrollToEnd());
+        }
+
+        public List<string> GetDataToBroadcast()
+        {
+            return bData;
+        }
+
+        public void addCommand(char Command)
+        {
+            client.AddCommand(Command);
+            Trace.WriteLine("Command: "+Command);
         }
         private void ShowMessage(string msg)
         {

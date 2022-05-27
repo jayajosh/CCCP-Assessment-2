@@ -23,6 +23,6 @@
         <TextBox HorizontalAlignment="Left" Margin="300,200,0,0" VerticalAlignment="Top" Width="200" Height="25"  Name="Quantity"/>
         <Label Content="Price" HorizontalAlignment="Left" Height="25" Margin="50,250,0,0" VerticalAlignment="Top" Width="200" Foreground="#FFF0EFF1" FontFamily="SF Pro Display" FontWeight="Bold" HorizontalContentAlignment="Center"/>
         <TextBox HorizontalAlignment="Left" Margin="300,250,0,0" VerticalAlignment="Top" Width="200" Height="25"  Name="Price"/>
-        <Button Content="Add Items" HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" Width="428" Height="40" Background="#FF434346" FontFamily="SF Pro Display" FontSize="16" Foreground="#FFF0EFF1" BorderBrush="#FF2D2D30" Click="AddItemsClick"/>
+        <Button Content="Add Items" HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" Width="428" Height="40" Background="#FF434346" FontFamily="SF Pro Display" FontSize="16" Foreground="#FFF0EFF1" BorderBrush="#FF2D2D30" Click="AddItemsClick" Name="AddItemsButton"/>
     </Grid>
 </Page>

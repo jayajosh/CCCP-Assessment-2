@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,7 @@ namespace Assignment_Gui.Pages
     {
         private readonly GatewayFacade facade;
         private readonly DTOConverter converter;
+        public bool click;
         public AddItemPage()
         {
             InitializeComponent();
@@ -32,10 +34,15 @@ namespace Assignment_Gui.Pages
 
         private void AddItemsClick(object sender, RoutedEventArgs e)
         {
+            List<string> data = new List<string>{Employee.Text, ID.Text, Name.Text, Quantity.Text, Price.Text};
+            ((MainWindow)Application.Current.MainWindow).bData = data;
+            ((MainWindow)Application.Current.MainWindow).GetDataToBroadcast();
+            ((MainWindow)Application.Current.MainWindow).addCommand('1');
+            Trace.WriteLine(data[2]);
             //bool success = Program.AddItemToStock(, Int32.Parse(ID.Text), Name.Text, Int32.Parse(Quantity.Text), Double.Parse(Price.Text));
             try
             {
-                int employeeID = Int32.Parse(Employee.Text);
+/*                int employeeID = Int32.Parse(Employee.Text);
                 if (facade.FindEmployee(employeeID) == null)
                 {
                     throw new Exception("ERROR: Employee not found");
@@ -54,7 +61,7 @@ namespace Assignment_Gui.Pages
                 ItemDTO i = facade.AddItem(itemId, itemName, itemQuantity);
                 facade.AddTransaction("Item Added", i.ID, i.Name, itemPrice, i.Quantity, employeeID);
 
-                MessageBox.Show("Item Added");
+                MessageBox.Show("Item Added");*/
             }
             catch (Exception error)
             {
