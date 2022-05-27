@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AssignmentMain.Objects;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Sockets;
 using System.Text.Json;
 using ui_command;
@@ -19,6 +21,10 @@ namespace ServerSide
 
         private BroadcastMessageToAllClients broadcast;
 
+        private CommandFactory factory;
+
+        delegate Dictionary<string, dynamic> GetDataToBroadcast();
+
         public ClientService(Socket socket, RemoveClient rc, BroadcastMessageToAllClients broadcast)
         {
             this.socket = socket;
@@ -28,13 +34,12 @@ namespace ServerSide
             stream = new NetworkStream(socket);
             reader = new StreamReader(stream, System.Text.Encoding.UTF8);
             writer = new StreamWriter(stream, System.Text.Encoding.UTF8);
+            factory = new CommandFactory();
         }
         public void InteractWithClient()
         {
-
-            CommandFactory factory = new CommandFactory();
             factory
-                .CreateCommand(UI_Command.INITIALISE_DATABASE)
+                .CreateCommand(UI_Command.INITIALISE_DATABASE,null)
                 .Execute();
 
             try
@@ -42,7 +47,19 @@ namespace ServerSide
                 string clientMessage = reader.ReadLine();
                 while (clientMessage != null)
                 {
-                    if (clientMessage.ToUpper().StartsWith("B"))
+                    if (Char.IsDigit(clientMessage[0]))
+                    {
+                        Dictionary<string, dynamic> data = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(reader.ReadLine());
+                        string returnData = factory
+                        .CreateCommand(Int32.Parse(clientMessage[0].ToString()),data)
+                        .Execute();
+                        string msgToBroadcast = new CommandFactory()
+                        .Create(clientMessage[0], returnData)
+                        .Execute();
+                        BroadCastMessage(msgToBroadcast);
+                    }
+                    clientMessage = reader.ReadLine();
+                    /*if (clientMessage.ToUpper().StartsWith("B"))
                     {
                         clientMessage = reader.ReadLine();
                         broadcast(
@@ -54,11 +71,14 @@ namespace ServerSide
                     else if (Char.IsDigit(clientMessage[0])) 
                     {
                         clientMessage = reader.ReadLine();
-                        broadcast(
-                            string.Format(
-                                "{0}: {1}",
-                                socket.RemoteEndPoint.ToString(),
-                                clientMessage));
+                        Dictionary<string, dynamic> data = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(clientMessage);
+                        foreach (string key in data.Keys)
+                        {
+                            broadcast(
+                                string.Format(
+                                "{0}: {1} : {2}",
+                                socket.RemoteEndPoint.ToString(),key,data[key]));
+                        }
                     }
 
                     else
@@ -75,7 +95,7 @@ namespace ServerSide
                         }
                     }
 
-                    clientMessage = reader.ReadLine();
+                    clientMessage = reader.ReadLine();*/
 
                     /*                    if (clientMessage.ToUpper().StartsWith("B"))
                                         {

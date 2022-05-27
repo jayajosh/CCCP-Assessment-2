@@ -1,4 +1,5 @@
 ﻿using Assignment_Gui;
+using AssignmentMain.Objects;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -20,15 +21,17 @@ namespace WPF_Client
         private bool clientRunning;
 
         private ConcurrentQueue<List<string>> messages;
+        private List<string> returnData;
         private BlockingCollection<char> commands;
 
         private BroadcastMessage BroadcastMessage;
         private GetDataToBroadcast GetDataToBroadcast;
         private ShowMessage ShowMessage;
+        private ReturnData ReturnData;
         /*private GetMessageToBroadcast GetMessageToBroadcast;
         private DisplayVerse DisplayVerse;*/
 
-        public WPFClient(BroadcastMessage BroadcastMessage, GetDataToBroadcast GetDataToBroadcast)
+        public WPFClient(BroadcastMessage BroadcastMessage, GetDataToBroadcast GetDataToBroadcast, ReturnData ReturnData)
         {
             tcpClient = new TcpClient();
             messages = new ConcurrentQueue<List<string>>();
@@ -36,6 +39,7 @@ namespace WPF_Client
             this.BroadcastMessage = BroadcastMessage;
             this.GetDataToBroadcast = GetDataToBroadcast;
             this.ShowMessage = ShowMessage;
+            this.ReturnData = ReturnData;
             //this.DisplayVerse = DisplayVerse;
         }
 
@@ -52,7 +56,7 @@ namespace WPF_Client
                 {
                     char userInput = commands.Take();
 
-                    List<string> msgToBroadcast = new List<string> { };
+                    Dictionary<string, dynamic> msgToBroadcast;
                     if (Char.IsDigit(userInput))
                     {
                         msgToBroadcast = GetDataToBroadcast();
@@ -84,16 +88,15 @@ namespace WPF_Client
             return true;
         }
 
-        private void WriteToServer(char userChoice, List<string> broadcastData)
+        private void WriteToServer(char userChoice, Dictionary<string, dynamic> broadcastData)
         {
             if (Char.IsDigit(userChoice)) {
                 writer.WriteLine("" + userChoice);
-                Trace.WriteLine(userChoice);
-                foreach (string line in broadcastData)
+                writer.WriteLine(JsonSerializer.Serialize(broadcastData));
+               /* foreach (string line in broadcastData)
                 {
-                    Trace.WriteLine(line);
                     writer.WriteLine(line);
-                }
+                }*/
                 writer.Flush();
             }
             else if (userChoice == 'X')
@@ -124,9 +127,9 @@ namespace WPF_Client
                 {
                     messages.Enqueue(msg);
                 }
-                else if (code == 'V')
+                if (Char.IsDigit(code))
                 {
-                    messages.Enqueue(msg);
+                    ReturnData(code, msg);
                     //DisplayVerse(msg);
                 }
             }

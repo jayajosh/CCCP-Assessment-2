@@ -1,5 +1,4 @@
 ﻿using AssignmentMain;
-using DataGateway;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,7 +20,6 @@ namespace Assignment_Gui.Pages
     /// </summary>
     public partial class TransactionLogPage : Page
     {
-        private readonly GatewayFacade facade;
         string report1;
         string report2;
         string report3;
@@ -41,12 +39,9 @@ namespace Assignment_Gui.Pages
             report6 = "EMPLOYEE";
             report7 = "PRICE";
 
-            facade = new GatewayFacade();
+            
 
-            TL = facade.GetTransactions();
-            Trace.WriteLine(TL);
-
-            foreach (TransactionLogEntry entry in TL)
+            /*foreach (TransactionLogEntry entry in TL)
             {
                 report1 += "\n" + entry.DateAdded.ToString("dd/MM/yyyy");
                 report2 += "\n" + entry.TypeOfTransaction;
@@ -63,7 +58,12 @@ namespace Assignment_Gui.Pages
             ReportBlock4.Text = report4;
             ReportBlock5.Text = report5;
             ReportBlock6.Text = report6;
-            ReportBlock7.Text = report7;
+            ReportBlock7.Text = report7;*/
+        }
+
+        public void fetchData()
+        {
+            ((MainWindow)Application.Current.MainWindow).addCommand('6');
         }
     }
 }

@@ -12,8 +12,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AssignmentMain;
-using DataGateway;
-using dto;
 
 namespace Assignment_Gui.Pages
 {
@@ -22,26 +20,22 @@ namespace Assignment_Gui.Pages
     /// </summary>
     public partial class AddItemPage : Page
     {
-        private readonly GatewayFacade facade;
-        private readonly DTOConverter converter;
         public bool click;
         public AddItemPage()
         {
             InitializeComponent();
-            facade = new GatewayFacade();
-            converter = new DTOConverter();
         }
 
         private void AddItemsClick(object sender, RoutedEventArgs e)
         {
-            List<string> data = new List<string>{Employee.Text, ID.Text, Name.Text, Quantity.Text, Price.Text};
-            ((MainWindow)Application.Current.MainWindow).bData = data;
-            ((MainWindow)Application.Current.MainWindow).GetDataToBroadcast();
-            ((MainWindow)Application.Current.MainWindow).addCommand('1');
-            Trace.WriteLine(data[2]);
-            //bool success = Program.AddItemToStock(, Int32.Parse(ID.Text), Name.Text, Int32.Parse(Quantity.Text), Double.Parse(Price.Text));
             try
             {
+                Dictionary<string,dynamic> data = new Dictionary<string, dynamic> { {"employeeID", Int32.Parse(Employee.Text) }, { "itemID", Int32.Parse(ID.Text) }, { "name", Name.Text }, { "quantity", Int32.Parse(Quantity.Text) }, { "price", Double.Parse(Price.Text) } };
+                ((MainWindow)Application.Current.MainWindow).bData = data;
+                ((MainWindow)Application.Current.MainWindow).GetDataToBroadcast();
+                ((MainWindow)Application.Current.MainWindow).addCommand('1');
+                //bool success = Program.AddItemToStock(, Int32.Parse(ID.Text), Name.Text, Int32.Parse(Quantity.Text), Double.Parse(Price.Text));
+
 /*                int employeeID = Int32.Parse(Employee.Text);
                 if (facade.FindEmployee(employeeID) == null)
                 {
